@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+Welcomet to Login Page
+
+Hell {{name}}
+
+Confirmation Link: http://{{domain}}{% url 'activate' uid64=uid token=token %}
+
+{% endautoescape %}

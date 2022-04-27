@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+<center>
+    <h2>Sunflower School</h2>
+    
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}</h3>
+    <h4>You are successfully logged in</h4>
+    <button type="submit" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="{% url 'signout' %}">SignOut</a></button>
+    {% else %}
+    <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="{% url 'signup' %}">Signup</a></button>
+    <button type="submit" class="btn btn-primary"><a style="text-decoration: none; color: white;" href="{% url 'signin' %}">SignIn</a></button>
+    {% endif %}
+    {% endblock %}
+</center>

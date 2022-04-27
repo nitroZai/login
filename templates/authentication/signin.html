@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+<center>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    
+    <h3>SignIn Form</h3>
+    
+    <div class="container">
+        <form action="{% url 'signin' %}" method="post">
+        
+            {% csrf_token %}
+        <div class="form-group">
+        
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Your favorite username" required>
+        </div>
+            <br>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input class="form-control" type="password" id="pass1" name="pass1" placeholder="Your password" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-dark">Sign In</button>
+        </form>
+    </div>
+</center>
+{% endblock %}
